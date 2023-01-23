@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/badge/minSdk-27-orange"> <img src="https://img.shields.io/badge/targetSdk-32-lightgrey"> 
 <img src="https://img.shields.io/badge/version-1-yellow">
 
-A simple android application, an unofficial Last.fm app that contains information about different music genres, the albums, artists and tracks listed under the genre.
+A simple android application, an unofficial Last.fm app that contains information about different music genres, the albums, artists and tracks listed under the genre. First screen contains the all genre and clicking on it will give the detail about genre with description and top albums, tracks, artist. And clicking on it will get more detailed data about that.
 
 ![Desktop - 1](https://user-images.githubusercontent.com/54764235/214113566-667be473-15d9-48a5-9ab5-a12723220ce7.png)
 
