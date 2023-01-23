@@ -49,7 +49,10 @@
             android:name="artistItem"
             app:argType="com.rohit.musicwiki.models.TabItem" />
         <action
-            android:id="@+id/action_artistDetailFragment_self"
-            app:destination="@id/artistDetailFragment" />
+            android:id="@+id/action_artistDetailFragment_to_genreDetailFragment"
+            app:destination="@id/genreDetailFragment" />
+        <action
+            android:id="@+id/action_artistDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
 </navigation>

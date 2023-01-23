@@ -26,7 +26,7 @@ class AlbumDetailFragment : Fragment() {
     private lateinit var binding: FragmentAlbumDetailBinding
 
     private lateinit var viewModel: AlbumDetailsViewModel
-    private lateinit var adapter: TagsRecyclerAdapter
+    private lateinit var tagAdapter: TagsRecyclerAdapter
 
     @Inject
     lateinit var viewModelFactory: AlbumDetailViewModelFactory
@@ -44,24 +44,24 @@ class AlbumDetailFragment : Fragment() {
 
         binding.tabItem = args.albumItem
 
-        args.albumItem.title?.let { viewModel.fetchAlbumInfo(args.albumItem.artistName, it) }
+        viewModel.fetchAlbumInfo(args.albumItem.artistName,args.albumItem.title!!)
         checkAlbumInfo()
 
         return binding.root
     }
 
     private fun checkAlbumInfo() {
-        adapter = TagsRecyclerAdapter(TagsClickListener {
+        tagAdapter = TagsRecyclerAdapter(TagsClickListener {
             this.findNavController().navigate(AlbumDetailFragmentDirections.actionAlbumDetailFragmentToGenreDetailFragment(it))
         })
         binding.albumTagsRecyclerView.apply {
-            adapter = adapter
+            adapter = tagAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
         viewModel.albumInfo.observe(viewLifecycleOwner, Observer {
             if (it.status== Result.Status.SUCCESS){
-                Log.d(TAG, "checkTagInfo: ${it.data}")
-                adapter.submitList(it.data?.album?.tags?.tag)
+                Log.d(TAG, "checkTagInfoforAlbum: ${it.data?.album?.tags?.tag}")
+                tagAdapter.submitList(it.data?.album?.tags?.tag)
                 binding.description.text = it.data?.album?.wiki?.summary
             }else if (it.status == Result.Status.ERROR){
                 Log.d(TAG, "checkTags: ${it.message}")

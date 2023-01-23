@@ -6,6 +6,8 @@ import com.rohit.musicwiki.models.albumInfo.AlbumInfoResponse
 import com.rohit.musicwiki.models.albums.TopAlbumsResponse
 import com.rohit.musicwiki.models.artistInfo.ArtistInfoResponse
 import com.rohit.musicwiki.models.artists.TopArtistsResponse
+import com.rohit.musicwiki.models.topAlbumsByArtist.TopAlbumsByArtist
+import com.rohit.musicwiki.models.topTrackByArtist.TopTracksByArtistResponse
 import com.rohit.musicwiki.models.tracks.TopTracksResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -33,5 +35,11 @@ interface ApiService {
 
     @GET("/2.0/?method=artist.getinfo&api_key=ea7f9f45271be9646bc7be2ffcd8563d&format=json")
     suspend fun getArtistInfo(@Query("artist") artist: String): Response<ArtistInfoResponse>
+
+    @GET("/2.0/?method=artist.gettoptracks&api_key=ea7f9f45271be9646bc7be2ffcd8563d&format=json")
+    suspend fun getTopTrackByArtist(@Query("artist") artist: String): Response<TopTracksByArtistResponse>
+
+    @GET("/2.0/?method=artist.gettopalbums&api_key=ea7f9f45271be9646bc7be2ffcd8563d&format=json")
+    suspend fun getTopAlbumsByArtist(@Query("artist") artist: String): Response<TopAlbumsByArtist>
 
 }

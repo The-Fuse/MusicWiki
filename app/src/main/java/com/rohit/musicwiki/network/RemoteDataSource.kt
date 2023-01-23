@@ -6,6 +6,8 @@ import com.rohit.musicwiki.models.albumInfo.AlbumInfoResponse
 import com.rohit.musicwiki.models.albums.TopAlbumsResponse
 import com.rohit.musicwiki.models.artistInfo.ArtistInfoResponse
 import com.rohit.musicwiki.models.artists.TopArtistsResponse
+import com.rohit.musicwiki.models.topAlbumsByArtist.TopAlbumsByArtist
+import com.rohit.musicwiki.models.topTrackByArtist.TopTracksByArtistResponse
 import com.rohit.musicwiki.models.tracks.TopTracksResponse
 import com.rohit.musicwiki.utils.Result
 import javax.inject.Inject
@@ -35,6 +37,12 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService): 
 
     override suspend fun getArtistInfoResponse(artist: String): Result<ArtistInfoResponse> =
         getResult { apiService.getArtistInfo(artist) }
+
+    override suspend fun getTopTrackByArtist(artist: String): Result<TopTracksByArtistResponse> =
+        getResult { apiService.getTopTrackByArtist(artist) }
+
+    override suspend fun getTopAlbumsByArtist(artist: String): Result<TopAlbumsByArtist> =
+        getResult { apiService.getTopAlbumsByArtist(artist) }
 }
 
 interface IRemoteDataSource{
@@ -46,4 +54,6 @@ interface IRemoteDataSource{
     suspend fun getTopTracks(tag: String): Result<TopTracksResponse>
     suspend fun getAlbumInfoResponse(artist: String, album: String): Result<AlbumInfoResponse>
     suspend fun getArtistInfoResponse(artist: String): Result<ArtistInfoResponse>
+    suspend fun getTopTrackByArtist(artist: String): Result<TopTracksByArtistResponse>
+    suspend fun getTopAlbumsByArtist(artist: String): Result<TopAlbumsByArtist>
 }

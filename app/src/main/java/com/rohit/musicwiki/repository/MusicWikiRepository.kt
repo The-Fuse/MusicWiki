@@ -25,4 +25,10 @@ class MusicWikiRepository @Inject constructor(private val remoteDataSource: IRem
 
     suspend fun getArtistInfo(artist: String) =
         remoteDataSource.getArtistInfoResponse(artist)
+
+    suspend fun getTopTrackByArtist(artist: String)=
+        remoteDataSource.getTopTrackByArtist(artist)
+
+    suspend fun getTopAlbumByArtist(artist: String) =
+        remoteDataSource.getTopAlbumsByArtist(artist)
 }
