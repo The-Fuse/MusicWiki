@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.rohit.musicwiki.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_genreDetailFragment"
+            app:destination="@id/genreDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/genreDetailFragment"
+        android:name="com.rohit.musicwiki.ui.genreDetail.GenreDetailFragment"
+        android:label="fragment_genre_detail"
+        tools:layout="@layout/fragment_genre_detail" >
+        <argument
+            android:name="tagItem"
+            app:argType="com.rohit.musicwiki.models.Tag" />
+        <action
+            android:id="@+id/action_genreDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+        <action
+            android:id="@+id/action_genreDetailFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.rohit.musicwiki.ui.albumDetail.AlbumDetailFragment"
+        android:label="fragment_album_detail"
+        tools:layout="@layout/fragment_album_detail" >
+        <argument
+            android:name="albumItem"
+            app:argType="com.rohit.musicwiki.models.TabItem" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_genreDetailFragment"
+            app:destination="@id/genreDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistDetailFragment"
+        android:name="com.rohit.musicwiki.ui.artistDetail.ArtistDetailFragment"
+        android:label="ArtistDetailFragment" >
+        <argument
+            android:name="artistItem"
+            app:argType="com.rohit.musicwiki.models.TabItem" />
+        <action
+            android:id="@+id/action_artistDetailFragment_self"
+            app:destination="@id/artistDetailFragment" />
+    </fragment>
+</navigation>
